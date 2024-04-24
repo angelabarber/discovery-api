@@ -1,0 +1,146 @@
+[
+  {
+    "pk": 1,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "intact",
+      "category_name": "condition"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "excellent",
+      "category_name": "condition"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "good",
+      "category_name": "condition"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "fair",
+      "category_name": "condition"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "poor",
+      "category_name": "condition"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "destroyed",
+      "category_name": "condition"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "baths",
+      "category_name": "location"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "villa",
+      "category_name": "location"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "garden",
+      "category_name": "location"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "temple",
+      "category_name": "location"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "tomb",
+      "category_name": "location"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "forum",
+      "category_name": "location"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "fresco",
+      "category_name": "material"
+    }
+  },
+  {
+    "pk": 14,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "marble",
+      "category_name": "material"
+    }
+  },
+  {
+    "pk": 15,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "terracotta",
+      "category_name": "material"
+    }
+  },
+  {
+    "pk": 16,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "bronze",
+      "category_name": "material"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "glass",
+      "category_name": "material"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "discoveryapi.trait",
+    "fields": {
+      "name": "gold",
+      "category_name": "material"
+    }
+  }
+]

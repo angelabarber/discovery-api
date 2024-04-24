@@ -1,0 +1,90 @@
+[
+  {
+    "pk": 1,
+    "model": "discoveryapi.artifact",
+    "fields": {
+      "name": "Pompeii Mosaic",
+      "description": "This intricate mosaic was found in the ruins of Pompeii and depicts scenes from ancient Roman life.",
+      "image_url": "https://static.wixstatic.com/media/2686e1_c2baa6a6860d4ceb92ccf66b51a11b1f~mv2.jpg/v1/fill/w_600,h_566,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/2686e1_c2baa6a6860d4ceb92ccf66b51a11b1f~mv2.jpg",
+      "user": 1,
+      "site": 1
+    }
+  },
+  {
+    "pk": 2,
+    "model": "discoveryapi.artifact",
+    "fields": {
+      "name": "Pompeii Amphora",
+      "description": "This well-preserved amphora was unearthed in the ruins of Pompeii and likely held wine or olive oil.",
+      "image_url": "https://www.ostia-antica.org/dict/topics/grain-for-pompeii/img-1.jpg",
+      "user": 2,
+      "site": 1
+    }
+  },
+  {
+    "pk": 3,
+    "model": "discoveryapi.artifact",
+    "fields": {
+      "name": "Roman Statue",
+      "description": "This imposing marble statue of a Roman senator was discovered in the ancient city of Rome.",
+      "image_url": "https://news.artnet.com/app/news-upload/2023/01/ercole-scavo-1024x768.jpeg",
+      "user": 3,
+      "site": 2
+    }
+  },
+  {
+    "pk": 4,
+    "model": "discoveryapi.artifact",
+    "fields": {
+      "name": "Roman Coin",
+      "description": "This well-preserved Roman coin was minted in the city of Rome and found during archaeological excavations.",
+      "image_url": "https://cdn.thecollector.com/wp-content/uploads/2022/02/gold-roman-coin-front-back.jpg?width=1400&quality=55",
+      "user": 4,
+      "site": 2
+    }
+  },
+  {
+    "pk": 5,
+    "model": "discoveryapi.artifact",
+    "fields": {
+      "name": "Herculaneum Fresco",
+      "description": "This vibrant fresco adorned the walls of a villa in Herculaneum and showcases ancient Roman artistry.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Herculaneum_Fresco_001.jpg/606px-Herculaneum_Fresco_001.jpg",
+      "user": 5,
+      "site": 3
+    }
+  },
+  {
+    "pk": 6,
+    "model": "discoveryapi.artifact",
+    "fields": {
+      "name": "Snake Bracelet",
+      "description": "This gold bracelet was found amidst the ruins of Herculaneum and provides insight into daily life in ancient times.",
+      "image_url": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/3/25/1364228379414/Snake-bracelet-002.jpg?width=700&quality=85&auto=format&fit=max&s=1d11dbef5a2703f5fecebb33969f2ffd",
+      "user": 6,
+      "site": 3
+    }
+  },
+  {
+    "pk": 7,
+    "model": "discoveryapi.artifact",
+    "fields": {
+      "name": "Egyptian Scarab",
+      "description": "This intricately carved scarab beetle amulet was found in an ancient Egyptian tomb.",
+      "image_url": "https://www.mediastorehouse.com/p/617/egyptian-amulet-scarab-beetle-9760829.jpg.webp",
+      "user": 3,
+      "site": 4
+    }
+  },
+  {
+    "pk": 8,
+    "model": "discoveryapi.artifact",
+    "fields": {
+      "name": "Egyptian Hieroglyphs",
+      "description": "These well-preserved hieroglyphs were discovered on the walls of a temple in ancient Egypt, offering insight into the civilization's language and culture.",
+      "image_url": "https://cdn.britannica.com/88/124388-050-EFAFCE59/Hieroglyphs-temple-Ombos-Egypt.jpg",
+      "user": 5,
+      "site": 4
+    }
+  }
+]

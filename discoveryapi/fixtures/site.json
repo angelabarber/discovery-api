@@ -1,0 +1,34 @@
+[
+  {
+    "pk": 1,
+    "model": "discoveryapi.site",
+    "fields": {
+      "name": "pompeii",
+      "description": "Pompeii, an ancient Roman city near modern Naples in Italy, was buried under volcanic ash and pumice in the eruption of Mount Vesuvius in AD 79. This catastrophic event preserved Pompeii as an archaeological site, famous for its well-preserved ruins, including buildings, frescoes, and artifacts. Pompeii offers a glimpse into ancient Roman life and architecture."
+    }
+  },
+  {
+    "pk": 2,
+    "model": "discoveryapi.site",
+    "fields": {
+      "name": "rome",
+      "description": "Rome, the capital of Italy, is one of the most significant archaeological sites in the world. As the heart of the ancient Roman Empire, Rome boasts numerous landmarks and artifacts from classical antiquity. Key attractions include the Colosseum, Roman Forum, Pantheon, and various temples, baths, and monuments that reflect Rome's rich history and cultural heritage."
+    }
+  },
+  {
+    "pk": 3,
+    "model": "discoveryapi.site",
+    "fields": {
+      "name": "herculaneum",
+      "description": "Herculaneum, located near Pompeii, was another ancient Roman town destroyed and preserved by the eruption of Mount Vesuvius in AD 79. Although smaller than Pompeii, Herculaneum is known for its exceptionally well-preserved buildings, mosaics, and even organic remains, providing valuable archaeological evidence of daily life in antiquity."
+    }
+  },
+  {
+    "pk": 4,
+    "model": "discoveryapi.site",
+    "fields": {
+      "name": "egypt",
+      "description": "Egypt, renowned for its ancient civilization, spans thousands of years and boasts an abundance of archaeological treasures. The Nile River Valley is home to iconic sites such as the Pyramids of Giza, the Sphinx, and the temples of Luxor and Karnak. Archaeological excavations in Egypt have uncovered royal tombs, temples, artifacts, and hieroglyphic inscriptions, shedding light on the culture, religion, and history of ancient Egypt."
+    }
+  }
+]

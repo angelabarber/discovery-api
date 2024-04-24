@@ -5,6 +5,9 @@ rm -rf ./discoveryapi/migrations
 python3 manage.py migrate
 python3 manage.py makemigrations discoveryapi
 python3 manage.py migrate discoveryapi
-python3 manage.py loaddata users
-python3 manage.py loaddata tokens
+python3 manage.py loaddata user
+python3 manage.py loaddata token
+python3 manage.py loaddata site
+python3 manage.py loaddata artifact
+python3 manage.py loaddata trait
 
