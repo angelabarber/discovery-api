@@ -84,13 +84,15 @@ class ArtifactSerializer(serializers.ModelSerializer):
         SiteSerializer()
     )  # Include the SiteSerializer for the nested representation of the Site
 
+    imageUrl = serializers.CharField(source="image_url")
+
     class Meta:
         model = Artifact
         fields = (
             "id",
             "name",
             "description",
-            "image_url",
+            "imageUrl",
             "site",
             "traits",
         )
