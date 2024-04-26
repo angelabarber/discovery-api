@@ -1,10 +1,19 @@
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from discoveryapi.views import register_user, login_user, get_current_user, ArtifactView
+from discoveryapi.views import (
+    register_user,
+    login_user,
+    get_current_user,
+    ArtifactView,
+    TraitView,
+    SiteView,
+)
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r"artifacts", ArtifactView, "artifact")
+router.register(r"traits", TraitView, "trait")
+router.register(r"sites", SiteView, "site")
 
 urlpatterns = [
     path("", include(router.urls)),
