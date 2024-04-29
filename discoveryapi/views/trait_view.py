@@ -41,4 +41,4 @@ class TraitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Trait
-        fields = ("name", "category_name")
+        fields = ("id", "name", "category_name")

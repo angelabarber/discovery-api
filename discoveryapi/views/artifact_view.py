@@ -47,63 +47,6 @@ class ArtifactView(ViewSet):
         except Exception as ex:
             return Response({"error": str(ex)}, status=status.HTTP_400_BAD_REQUEST)
 
-    # def create(self, request):
-    #     try:
-    #         # Extract user from request
-    #         user = request.auth.user
-
-    #         # Extract trait IDs from request data
-    #         location_ids = request.data.get("location", [])
-    #         material_ids = request.data.get("material", [])
-    #         condition_ids = request.data.get("condition", [])
-    #         trait_ids = location_ids + material_ids + condition_ids
-
-    #         # Get traits based on IDs
-    #         traits = Trait.objects.filter(pk__in=trait_ids)
-
-    #         # Deserialize and validate site data
-    #         site_data = request.data.get("site")
-    #         if not site_data:
-    #             raise serializers.ValidationError("Site data is required")
-
-    #         site_serializer = SiteSerializer(data=site_data)
-    #         site_serializer.is_valid(raise_exception=True)
-    #         site = site_serializer.save()
-
-    #         # Create artifact instance
-    #         artifact = Artifact()
-    #         artifact.name = request.data["name"]
-    #         artifact.description = request.data["description"]
-    #         artifact.image_url = request.data.get("imageUrl", "")
-    #         artifact.user = user
-    #         artifact.site = site
-
-    #         artifact.save()
-
-    #         # Set many-to-many relationship between artifact and traits
-    #         artifact.traits.set(traits)
-
-    #         # Serialize and return artifact data
-    #         serializer = ArtifactSerializer(artifact)
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-    #     except serializers.ValidationError as ex:
-    #         return Response({"error": str(ex)}, status=status.HTTP_400_BAD_REQUEST)
-
-    #     except Exception as ex:
-    #         return Response({"error": str(ex)}, status=status.HTTP_400_BAD_REQUEST)
-
-    def retrieve(self, request, pk=None):
-        """Handle GET requests for single item"""
-        try:
-            artifact = Artifact.objects.get(pk=pk)
-            serializer = ArtifactSerializer(artifact)
-            return Response(serializer.data)
-        except Artifact.DoesNotExist:
-            return Response(
-                {"error": "Artifact not found"}, status=status.HTTP_404_NOT_FOUND
-            )
-
     def update(self, request, pk=None):
         """Handle PUT requests"""
         try:
@@ -114,17 +57,6 @@ class ArtifactView(ViewSet):
                 return Response(serializer.data)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        except Artifact.DoesNotExist:
-            return Response(
-                {"error": "Artifact not found"}, status=status.HTTP_404_NOT_FOUND
-            )
-
-    def destroy(self, request, pk=None):
-        """Handle DELETE requests for a single item"""
-        try:
-            artifact = Artifact.objects.get(pk=pk)
-            artifact.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
         except Artifact.DoesNotExist:
             return Response(
                 {"error": "Artifact not found"}, status=status.HTTP_404_NOT_FOUND
@@ -143,13 +75,65 @@ class ArtifactView(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex)
 
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for a single item
+
+        Returns:
+            Response -- 200, 404, or 500 status code
+        """
+        try:
+            artifact = Artifact.objects.get(pk=pk)
+            artifact.delete()
+            return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+        except Artifact.DoesNotExist as ex:
+            return Response({"message": ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+
+        except Exception as ex:
+            return Response(
+                {"message": ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+    # def retrieve(self, request, pk=None):
+    #     try:
+    #         artifact = (
+    #             Artifact.objects.select_related("site", "user")
+    #             .prefetch_related("traits")
+    #             .get(pk=pk)
+    #         )
+    #         serializer = ArtifactSerializer(artifact)
+    #         return Response(serializer.data)
+    #     except Artifact.DoesNotExist:
+    #         return Response(
+    #             {"error": "Artifact not found"}, status=status.HTTP_404_NOT_FOUND
+    #         )
+
+
+def retrieve(self, request, pk=None):
+    """Handle GET requests for single item
+
+    Returns:
+        Response -- JSON serialized instance
+    """
+    try:
+        artifact = Artifact.objects.get(pk=pk)
+        artifact_serializer = ArtifactSerializer(artifact)
+        traits = Trait.objects.filter(artifact_id=pk)
+        trait_serializer = TraitSerializer(traits, many=True)
+        artifact_data = artifact_serializer.data
+        artifact_data["traits"] = trait_serializer.data
+        return Response(artifact_data)
+
+    except Exception as ex:
+        return Response({"reason": ex.args[0]}, status=status.HTTP_400_BAD_REQUEST)
+
 
 class TraitSerializer(serializers.ModelSerializer):
     """Serializer for Trait model"""
 
     class Meta:
         model = Trait
-        fields = ("name", "category_name")
+        fields = ("id", "name", "category_name")
 
 
 class SiteSerializer(serializers.ModelSerializer):
@@ -157,7 +141,10 @@ class SiteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Site
-        fields = ("name",)
+        fields = (
+            "id",
+            "name",
+        )
 
 
 class ArtifactSerializer(serializers.ModelSerializer):
@@ -169,6 +156,7 @@ class ArtifactSerializer(serializers.ModelSerializer):
 
     imageUrl = serializers.CharField(source="image_url")
     traits = TraitSerializer(many=True)
+    site = SiteSerializer(many=False)
 
     class Meta:
         model = Artifact
