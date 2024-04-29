@@ -20,13 +20,19 @@ class ArtifactView(ViewSet):
                 traits.append(trait)
 
             # Deserialize and validate site data
-            site_data = request.data.get("site")
-            if site_data:
-                site_serializer = SiteSerializer(data=site_data)
-                site_serializer.is_valid(raise_exception=True)
-                site = site_serializer.save()
-            else:
-                site = None
+            # site_data = request.data.get("site")
+            # if site_data:
+            #     site_serializer = SiteSerializer(data=site_data)
+            #     site_serializer.is_valid(raise_exception=True)
+            #     site = site_serializer.save()
+            # else:
+            #     site = None
+
+            site_id = request.data.get("site")
+            site = None
+
+            if site_id:
+                site = Site.objects.get(pk=site_id)
 
             # Create artifact instance
             artifact = Artifact()
@@ -49,18 +55,35 @@ class ArtifactView(ViewSet):
 
     def update(self, request, pk=None):
         """Handle PUT requests"""
+
         try:
+            user = request.auth.user
+
+            traits = []
+            for trait_id in request.data["traits"]:
+                trait = Trait.objects.get(pk=trait_id)
+                traits.append(trait)
+
             artifact = Artifact.objects.get(pk=pk)
-            serializer = ArtifactSerializer(artifact, data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data)
-            else:
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            artifact.user = user
+            artifact.save()
+            artifact.traits.set(traits)
+
+            # serializer = ArtifactSerializer(artifact)
+            # if serializer.is_valid():
+            #     serializer.save()
+            #     return Response(serializer.data)
+            # else:
+            #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Artifact.DoesNotExist:
             return Response(
                 {"error": "Artifact not found"}, status=status.HTTP_404_NOT_FOUND
             )
+
+        except Exception as ex:
+            return HttpResponseServerError(ex)
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def list(self, request):
         """Handle GET requests for all items
@@ -94,38 +117,38 @@ class ArtifactView(ViewSet):
                 {"message": ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
-    # def retrieve(self, request, pk=None):
-    #     try:
-    #         artifact = (
-    #             Artifact.objects.select_related("site", "user")
-    #             .prefetch_related("traits")
-    #             .get(pk=pk)
-    #         )
-    #         serializer = ArtifactSerializer(artifact)
-    #         return Response(serializer.data)
-    #     except Artifact.DoesNotExist:
-    #         return Response(
-    #             {"error": "Artifact not found"}, status=status.HTTP_404_NOT_FOUND
-    #         )
+    def retrieve(self, request, pk=None):
+        try:
+            artifact = (
+                Artifact.objects.select_related("site", "user")
+                .prefetch_related("traits")
+                .get(pk=pk)
+            )
+            serializer = ArtifactSerializer(artifact)
+            return Response(serializer.data)
+        except Artifact.DoesNotExist:
+            return Response(
+                {"error": "Artifact not found"}, status=status.HTTP_404_NOT_FOUND
+            )
 
 
-def retrieve(self, request, pk=None):
-    """Handle GET requests for single item
+# def retrieve(self, request, pk=None):
+#     """Handle GET requests for single item
 
-    Returns:
-        Response -- JSON serialized instance
-    """
-    try:
-        artifact = Artifact.objects.get(pk=pk)
-        artifact_serializer = ArtifactSerializer(artifact)
-        traits = Trait.objects.filter(artifact_id=pk)
-        trait_serializer = TraitSerializer(traits, many=True)
-        artifact_data = artifact_serializer.data
-        artifact_data["traits"] = trait_serializer.data
-        return Response(artifact_data)
+#     Returns:
+#         Response -- JSON serialized instance
+#     """
+#     try:
+#         artifact = Artifact.objects.get(pk=pk)
+#         artifact_serializer = ArtifactSerializer(artifact)
+#         traits = Trait.objects.filter(artifact_id=pk)
+#         trait_serializer = TraitSerializer(traits, many=True)
+#         artifact_data = artifact_serializer.data
+#         artifact_data["traits"] = trait_serializer.data
+#         return Response(artifact_data)
 
-    except Exception as ex:
-        return Response({"reason": ex.args[0]}, status=status.HTTP_400_BAD_REQUEST)
+#     except Exception as ex:
+#         return Response({"reason": ex.args[0]}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class TraitSerializer(serializers.ModelSerializer):
@@ -147,9 +170,26 @@ class SiteSerializer(serializers.ModelSerializer):
         )
 
 
+class ArtifactUserSerializer(serializers.ModelSerializer):
+    """JSON Serializer"""
+
+    firstName = serializers.CharField(source="first_name")
+    lastName = serializers.CharField(source="last_name")
+
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "firstName",
+            "lastName",
+            "username",
+        )
+
+
 class ArtifactSerializer(serializers.ModelSerializer):
     """Serializer for Artifact model"""
 
+    user = ArtifactUserSerializer(many=False)
     site = (
         SiteSerializer()
     )  # Include the SiteSerializer for the nested representation of the Site
@@ -166,5 +206,6 @@ class ArtifactSerializer(serializers.ModelSerializer):
             "description",
             "imageUrl",
             "site",
+            "user",
             "traits",
         )

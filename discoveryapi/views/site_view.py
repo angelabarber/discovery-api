@@ -41,4 +41,7 @@ class SiteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Site
-        fields = ("name",)
+        fields = (
+            "id",
+            "name",
+        )
