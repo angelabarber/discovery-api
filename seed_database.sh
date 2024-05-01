@@ -10,4 +10,5 @@ python3 manage.py loaddata token
 python3 manage.py loaddata site
 python3 manage.py loaddata artifact
 python3 manage.py loaddata trait
+python3 manage.py loaddata city
 
