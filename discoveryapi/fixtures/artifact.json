@@ -3,7 +3,7 @@
     "pk": 1,
     "model": "discoveryapi.artifact",
     "fields": {
-      "name": "Pompeii Mosaic",
+      "name": "Mosaic",
       "description": "This intricate mosaic was found in the ruins of Pompeii and depicts scenes from ancient Roman life.",
       "image_url": "https://static.wixstatic.com/media/2686e1_c2baa6a6860d4ceb92ccf66b51a11b1f~mv2.jpg/v1/fill/w_600,h_566,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/2686e1_c2baa6a6860d4ceb92ccf66b51a11b1f~mv2.jpg",
       "user": 1,
@@ -14,9 +14,9 @@
     "pk": 2,
     "model": "discoveryapi.artifact",
     "fields": {
-      "name": "Pompeii Amphora",
+      "name": "Amphora",
       "description": "This well-preserved amphora was unearthed in the ruins of Pompeii and likely held wine or olive oil.",
-      "image_url": "https://www.ostia-antica.org/dict/topics/grain-for-pompeii/img-1.jpg",
+      "image_url": "https://media.newyorker.com/photos/6196e622990636d08e02ced2/master/w_1600%2Cc_limit/211129_r39455.jpg",
       "user": 2,
       "site": 1
     }
@@ -25,7 +25,7 @@
     "pk": 3,
     "model": "discoveryapi.artifact",
     "fields": {
-      "name": "Roman Statue",
+      "name": "Statue",
       "description": "This imposing marble statue of a Roman senator was discovered in the ancient city of Rome.",
       "image_url": "https://news.artnet.com/app/news-upload/2023/01/ercole-scavo-1024x768.jpeg",
       "user": 3,
@@ -36,9 +36,9 @@
     "pk": 4,
     "model": "discoveryapi.artifact",
     "fields": {
-      "name": "Roman Coin",
+      "name": "Coin",
       "description": "This well-preserved Roman coin was minted in the city of Rome and found during archaeological excavations.",
-      "image_url": "https://cdn.thecollector.com/wp-content/uploads/2022/02/gold-roman-coin-front-back.jpg?width=1400&quality=55",
+      "image_url": "https://assets.newatlas.com/dims4/default/321f9d9/2147483647/strip/true/crop/2880x1800+0+0/resize/2880x1800!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Fe0%2Fdd%2Fbb6648144705a610116d867c0a25%2Fsponsian-coin-1.jpeg",
       "user": 4,
       "site": 2
     }
@@ -47,7 +47,7 @@
     "pk": 5,
     "model": "discoveryapi.artifact",
     "fields": {
-      "name": "Herculaneum Fresco",
+      "name": "Fresco",
       "description": "This vibrant fresco adorned the walls of a villa in Herculaneum and showcases ancient Roman artistry.",
       "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Herculaneum_Fresco_001.jpg/606px-Herculaneum_Fresco_001.jpg",
       "user": 5,
@@ -69,7 +69,7 @@
     "pk": 7,
     "model": "discoveryapi.artifact",
     "fields": {
-      "name": "Egyptian Scarab",
+      "name": "Scarab",
       "description": "This intricately carved scarab beetle amulet was found in an ancient Egyptian tomb.",
       "image_url": "https://www.mediastorehouse.com/p/617/egyptian-amulet-scarab-beetle-9760829.jpg.webp",
       "user": 3,
@@ -80,7 +80,7 @@
     "pk": 8,
     "model": "discoveryapi.artifact",
     "fields": {
-      "name": "Egyptian Hieroglyphs",
+      "name": "Hieroglyphs",
       "description": "These well-preserved hieroglyphs were discovered on the walls of a temple in ancient Egypt, offering insight into the civilization's language and culture.",
       "image_url": "https://cdn.britannica.com/88/124388-050-EFAFCE59/Hieroglyphs-temple-Ombos-Egypt.jpg",
       "user": 5,

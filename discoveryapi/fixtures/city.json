@@ -1,0 +1,42 @@
+[
+  {
+    "pk": 1,
+    "model": "discoveryapi.city",
+    "fields": {
+      "name": "Herculaneum",
+      "location": "Herculaneum is situated near modern-day Naples, Italy, nestled along the coast of the Bay of Naples in the Campania region.",
+      "significance": "Herculaneum, like Pompeii, was buried under volcanic ash and preserved by the eruption of Mount Vesuvius in 79 AD. The remarkably preserved ruins offer valuable insights into daily life in the Roman Empire, including architecture, art, and social structure.",
+      "image_url": "https://www.gastrotravelogue.com/wp-content/uploads/2017/07/Herculaneum_.jpg"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "discoveryapi.city",
+    "fields": {
+      "name": "Rome",
+      "location": "Rome is located in the central-western portion of the Italian Peninsula, along the shores of the Tiber River.",
+      "significance": "Rome, the capital of Italy, was the heart of the ancient Roman Empire, influencing the development of Western civilization for centuries. It served as a center of power, culture, and trade, leaving behind a legacy of art, architecture, law, and language that continues to shape modern society.",
+      "image_url": "https://virtuoso-prod.dotcms.cloud/dA/1c340300-659d-485a-9fd1-0aeb2899648a/previewImage/hero_rome.jpg"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "discoveryapi.city",
+    "fields": {
+      "name": "Pompeii",
+      "location": "Pompeii is situated near Naples, Italy, at the foot of Mount Vesuvius, overlooking the Bay of Naples.",
+      "significance": "Pompeii was a bustling Roman city until it was buried under volcanic ash during the catastrophic eruption of Mount Vesuvius in 79 AD. The remarkably preserved ruins provide a vivid snapshot of daily life in ancient Rome, offering valuable insights into art, architecture, and social customs.",
+      "image_url": "https://travel.home.sndimg.com/content/dam/images/travel/fullrights/2019/1/29/0/CI_ElfQrin_Pompeii-and-Vesuvius.jpg.rend.hgtvcom.1280.960.suffix/1548778525177.jpeg"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "discoveryapi.city",
+    "fields": {
+      "name": "Egypt",
+      "location": "Egypt is located in northeastern Africa, bordered by the Mediterranean Sea to the north and the Red Sea to the east.",
+      "significance": "Egypt boasts one of the world's oldest civilizations, with a rich history spanning over 5,000 years. It was a cradle of civilization, known for its iconic pyramids, ancient temples, and the Nile River, contributing to advancements in architecture, mathematics, and religion.",
+      "image_url": "https://cdn.mos.cms.futurecdn.net/HgDjfQuhdcoBKL7BDLSyW5.jpg"
+    }
+  }
+]
