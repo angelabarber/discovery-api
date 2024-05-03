@@ -66,6 +66,10 @@ class ArtifactView(ViewSet):
 
             artifact = Artifact.objects.get(pk=pk)
             artifact.user = user
+            artifact.name = request.data["name"]
+            artifact.description = request.data["description"]
+            artifact.image_url = request.data["imageUrl"]
+            artifact.site = Site.objects.get(pk=request.data["site"])
             artifact.save()
             artifact.traits.set(traits)
 
