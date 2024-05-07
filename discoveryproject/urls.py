@@ -9,6 +9,7 @@ from discoveryapi.views import (
     TraitView,
     SiteView,
     CityView,
+    CommentView,
 )
 
 router = routers.DefaultRouter(trailing_slash=False)
@@ -16,6 +17,7 @@ router.register(r"artifacts", ArtifactView, "artifact")
 router.register(r"traits", TraitView, "trait")
 router.register(r"sites", SiteView, "site")
 router.register(r"cities", CityView, "city")
+router.register(r"comments", CommentView, "comment")
 
 urlpatterns = [
     path("", include(router.urls)),
